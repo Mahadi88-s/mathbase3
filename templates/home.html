@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mathbase</title>
+    <link rel="stylesheet" href="{% static 'style_home.css' %}">
+</head>
+<body>
+    <header class="topnav">
+        <a class="welcome" href="/index">Welcome to Mathsbase {{data}}</a>
+        <div class="search-container">
+            <form action="/search" method="POST">
+                {% csrf_token %}
+                <input name="username" type="text" placeholder="Search Users">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="sidenav">
+        <a class="active">Home</a>
+        <a href="/">Homepage</a>
+        {% if user.username == "Mahadi" %}
+        <a href="/upload_top1">Upload To Paper 1</a>
+        <a href="/upload_top2">Upload To Paper 2</a>
+        <a href="/upload_top3">Upload To Paper 3</a>
+        {% endif %}
+        {% if data.premium == True %}
+        <a href="/ai_site">AI Help</a>
+        {% endif %}
+        <a href="/ai_exercises">AI Exam practice</a>
+        <a href="/ai_exam">AI mini mock generator</a>
+        <a href="/map">GCSE Map of content</a>
+        <a href="/library">Library</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="main-content">
+        <article class="content-block">
+            <h2>Mathsbase introduction</h2>
+            <p>
+                MathsBase is a comprehensive database, meticulously designed to provide you with easy access to a vast collection of GCSE math exam questions sorted by question number, topic, and marks. Whether you're a student aiming for top grades or an educator seeking the perfect practice material for your class, MathsBase has got you covered!
+            </p>
+            <p>
+                For those seeking an enhanced experience, MathsBase offers an exclusive AI commentator for our paid users. This cutting-edge feature provides in-depth analysis and personalized feedback on your answers, helping you understand your strengths and areas for improvement.
+            </p>
+        </article>
+
+        <div class="content-block topics">
+            <h5><strong>AS & A Levels</strong> Mathsbase's collection of AS & A-level Maths & Further maths examinations!</h5>
+        </div>
+
+        <div class="paper-titles">
+            <h1><a href="p1asocr">Paper 1 Maths OCR AS: Pure mathematics and statistics (01)</a></h1>
+            <h1><a href="p2asocr">Paper 2 Maths OCR AS: Pure mathematics and mechanics (02)</a></h1>
+        </div>
+
+        <div class="content-block topics">
+            <h5><strong>GCSE</strong> Mathsbase's collection of GCSE Maths & Further maths examinations!</h5>
+        </div>
+        
+        <div class="paper-titles">
+            <h1><a href="paper1maths">Paper 1 Maths Edexcel Higher</a></h1>
+            <h1><a href="paper2maths">Paper 2 Maths Edexcel Higher</a></h1>
+            <h1><a href="paper3maths">Paper 3 Maths Edexcel Higher</a></h1>
+        </div>
+        
+        
+    </div>
+</body>
+</html>

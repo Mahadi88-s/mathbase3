@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <title>Mathbase - Upload Questions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .question-block h3 {
+            margin-top: 0;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .question-block p {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .question-block input[type="text"],
+        .question-block input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .question-block button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .question-block button.remove-block {
+            background-color: #dc3545;
+        }
+
+        .add-question {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Upload Multiple Questions to Pure Mathematics and Statistics (01)</h1>
+
+    <header>
+        <nav>
+            <div class="topnav">
+                <a href="/index">Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <form action="upload_as_ocr" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div id="question-container">
+            <div class="question-block">
+                <h3>Question 1</h3>
+                <input type="hidden" name="paper" value="1">
+
+                <p>Year</p>
+                <input type="text" name="year[]" required>
+
+                <p>Number</p>
+                <input type="text" name="number[]" required>
+
+                <p>Topic</p>
+                <input type="text" name="topic[]" required>
+
+                <p>Marks</p>
+                <input type="text" name="marks[]" required>
+
+                <p>Image</p>
+                <input type="file" name="img[]" required>
+
+                <p>Image Answer</p>
+                <input type="file" name="img_ans[]" required>
+
+                <p>Image Answer Worked</p>
+                <input type="file" name="img_w[]" required>
+
+                <p>Guidance</p>
+                <input type="text" name="guidance[]">
+                
+                <button type="button" class="remove-block" onclick="removeQuestion(this)">Remove Question</button>
+            </div>
+        </div>
+
+        <button type="button" class="add-question" onclick="addQuestion()">Add Another Question</button>
+        <button type="submit">Upload All Questions</button>
+    </form>
+
+    <script>
+        function addQuestion() {
+            var container = document.getElementById('question-container');
+            var questionCount = container.getElementsByClassName('question-block').length + 1;
+
+            var newBlock = document.createElement('div');
+            newBlock.className = 'question-block';
+
+            newBlock.innerHTML = `
+                <h3>Question ${questionCount}</h3>
+                <input type="hidden" name="paper" value="1">
+                <p>Year</p>
+                <input type="text" name="year[]" required>
+                <p>Number</p>
+                <input type="text" name="number[]" required>
+                <p>Topic</p>
+                <input type="text" name="topic[]" required>
+                <p>Marks</p>
+                <input type="text" name="marks[]" required>
+                <p>Image</p>
+                <input type="file" name="img[]" required>
+                <p>Image Answer</p>
+                <input type="file" name="img_ans[]" required>
+                <p>Image Answer Worked</p>
+                <input type="file" name="img_w[]" required>
+                <p>Guidance</p>
+                <input type="text" name="guidance[]">
+                <button type="button" class="remove-block" onclick="removeQuestion(this)">Remove Question</button>
+            `;
+
+            container.appendChild(newBlock);
+        }
+
+        function removeQuestion(button) {
+            var container = document.getElementById('question-container');
+            container.removeChild(button.parentElement);
+
+            // Reorder question numbers
+            var questionBlocks = container.getElementsByClassName('question-block');
+            for (var i = 0; i < questionBlocks.length; i++) {
+                questionBlocks[i].querySelector('h3').textContent = 'Question ' + (i + 1);
+            }
+        }
+    </script>
+
+    <footer>
+    </footer>
+
+</body>
+</html>

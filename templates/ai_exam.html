@@ -1,0 +1,367 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4514012061945986"
+     crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'basic.css' %}"/>
+    <script src="{% static 'script.js' %}"></script>
+    <title>Mathbase</title>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <b><a class="welcome" href="/index">Welcome to Mathsbase {{data}}</a></b>
+
+            <div class="search-container">
+              <form action="/search" method="POST">
+                {% csrf_token %}
+                <input name="username" type="text" placeholder="Search Users">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+
+        <br>
+
+    </header>
+    <div class="sidebar">
+        <a class="active" >Generate maths mini mocks</a>
+        <a href="/index" >Home</a>
+        <a href="/">Homepage</a>
+        {% if user.username == "Mahadi" %}
+        <a href="/upload_top1">Upload To Paper 1</a>
+        <a href="/upload_top2">Upload To Paper 2</a>
+        <a href="/upload_top3">Upload To Paper 3</a>
+        {% endif %}
+        {% if data.premium == True %}
+        <a href="/ai_site">AI Help</a>
+        {% endif %}
+        <a href="/ai_exercises">AI Exam practice</a>
+        <a href="/library">Library</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+        <br>
+    </div>
+
+
+    <div class="content">
+      <script src="{% static '/script.js' %}"> </script>
+      <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
+
+
+      <h2>Generate mini mocks</h2>
+      <br>
+      <h3>How to use</h3>
+      <table class="styled-table">
+        <tr>
+            <th>Choose all the topics you want to inculde</th>
+            <th>Choose the lenght of the exam </th>
+            <th>Choose difficulty</th>
+            <th>Name the file</th>
+            <th>Click on Generate pdf</th>
+        </tr>
+        <tr>
+            <th>in the checklist below</th>
+            <th>Large (22 Questions, 55 mins), normal (10 questions, 25 minutes)</th>
+            <th>Hard or normal</th>
+            <th>Eg. Paper 1 mock</th>
+            <th>Wait for a few seconds and you should have the file dowloaded!</th>
+        </tr>
+      </table>
+
+      <style>
+        .warning {
+          padding: 15px;
+          border: 3px solid red;
+          background-color: rgba(249, 1, 1, 0.596);
+          box-sizing: border-box;
+      }
+
+      .topics {
+          padding: 20px;
+          border: 3px solid rgba(3, 165, 19, 0.895);
+          background-color: rgba(1, 249, 38, 0.596);
+          box-sizing: border-box;
+      }
+      .tab th{
+        vertical-align: top;
+      }
+      </style>
+
+      <br>
+      <div class="warning">
+        <h5><strong>Info!</strong> In case you are unsatisfied with the result of the pdf generated, you can always refresh the tab and get a new pdf generation. HOWEVER, please do not abuse this feature.</h5>
+      </div>
+      <br>
+      <div class="warning">
+        <h5><strong>Warning:</strong> Sadly for now questions are going to be numbers and words only. No diagram will be provided.</h5>
+      </div>
+      <br>
+
+
+
+      <br>
+      <form action="/ai_exam_" method="POST">
+        {% csrf_token %}
+        <input type="text" name="filename" placeholder="File Name" style="border: solid 2px black;">
+        <br>
+        <br>
+        <div class="topics">
+          <table class="tab">
+            <tr>
+              <th>
+                Numbers
+              </th>
+              <th>
+                Algebra
+              </th>
+              <th>
+                Ratio & Proportions
+              </th>
+              <th>
+                Geometry
+              </th>
+              <th>
+                Probabilty & Statistics
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Factors and primes</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Factors and primes" name="checkbox_name" value="Factors and primes">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Indeces</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Indeces" name="checkbox_name" value="Indeces">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Fractions and Decimals</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Fractions and Decimals" name="checkbox_name" value="Fractions and Decimals">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Standard form</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Standard form" name="checkbox_name" value="Standard form">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Estimation</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Estimation" name="checkbox_name" value="Estimation">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Bounds</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Bounds" name="checkbox_name" value="Bounds">
+                  <span class="checkmark"></span>
+                </label><br>
+              </th>
+              <th>
+                <br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Expanding and fractorising</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Expanding and fractorising" name="checkbox_name" value="Expanding and fractorising">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Equations</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Equations" name="checkbox_name" value="Equations">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Sequences</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Sequences" name="checkbox_name" value="Sequences">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Simultaneous Equation</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Simultaneous Equation" name="checkbox_name" value="Simultaneous Equation">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Inqualities (Quadratic... linear)</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Inqualities (Quadratic... linear)" name="checkbox_name" value="Inqualities (Quadratic... linear)">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Tirgonometry</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Tirgonometry" name="checkbox_name" value="Tirgonometry">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Further Trigonometry</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Further Trigonometry" name="checkbox_name" value="Further Trigonometry">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Solving Quadratics</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Solving Quadratics" name="checkbox_name" value="Solving Quadratics">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Solving Quadratics with quadratic formula</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Solving Quadratics with quadratic formula" name="checkbox_name" value="Solving Quadratics with quadratic formula">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Completing the square</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Completing the square" name="checkbox_name" value="Completing the square">
+                  <span class="checkmark"></span>
+                </label><br>
+              </th>
+              <th>
+                <br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Ratio</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Ratio" name="checkbox_name" value="Ratio">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Proportion</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Proportion" name="checkbox_name" value="Proportion">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Inverse and direct - Proportion</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Inverse and direct - Proportion" name="checkbox_name" value="Inverse and direct - Proportion">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Percentage change & reverse %</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Percentage change & reverse %" name="checkbox_name" value="Percentage change & reverse %">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Speed - Time</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Speed and Time" name="checkbox_name" value="Speed and Time">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Density</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="denisty" name="checkbox_name" value="denisty">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Compound measures</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Compound measures" name="checkbox_name" value="Compound measures">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Compound interest</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Compound interest" name="checkbox_name" value="Compound interest">
+                  <span class="checkmark"></span>
+                </label><br>
+              </th>
+              <th>
+                <br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Angle Property</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Angle Property" name="checkbox_name" value="Angle Property">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Angles in polygons</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Angles in polygons" name="checkbox_name" value="Angles in polygons">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Advanced Trigonometry</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Advanced Trigonometry" name="checkbox_name" value="Advanced Trigonometry">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Area, perimiter and volume</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Area, perimiter and volume" name="checkbox_name" value="Area, perimiter and volume">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Similar shapes</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Similar shapes" name="checkbox_name" value="Similar shapes">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Circles</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Circles" name="checkbox_name" value="Circles">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Bearings</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Bearings" name="checkbox_name" value="Bearings">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Sin and Cos rule</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Sin and Cos rule" name="checkbox_name" value="Sin and Cos rule">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Pythagoras and Trig 3D</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Pythagoras and Trig 3D" name="checkbox_name" value="Pythagoras and Trig 3D">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Circle Theorems</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Circle Theorems" name="checkbox_name" value="Circle Theorems">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Circle Theorem proof</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Circle Theorem proof" name="checkbox_name" value="Circle Theorem proof">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Vectors and Vector proof</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Vectors and Vector proof" name="checkbox_name" value="Vectors and Vector proof">
+                  <span class="checkmark"></span>
+                </label><br>
+              </th>
+              <th>
+                <br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Mean Median Mode</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Mean Median Mode" name="checkbox_name" value="Mean Median Mode">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Frequency tables</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Frequency tables" name="checkbox_name" value="Frequency tables">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Line Graph</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Line Graph" name="checkbox_name" value="Line Graph">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Sampling</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Sampling" name="checkbox_name" value="Sampling">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Capture Re-capture</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Capture Re-capture" name="checkbox_name" value="Capture Re-capture">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Comparing data</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Comparing data" name="checkbox_name" value="Comparing data">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Probabilty</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Probabilty" name="checkbox_name" value="Probabilty">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Tree diagrams (porbability)</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Tree diagrams (porbability)" name="checkbox_name" value="Tree diagrams (porbability)">
+                  <span class="checkmark"></span>
+                </label><br>
+                <label class="container" style="color: #3d3d3d;">
+                  <div>Venn diagrams (porbability)</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="Venn diagrams (if possible u create a diagram trough --- or // and letters be creative)" name="checkbox_name" value="Venn diagrams (if possible u create a diagram trough --- or // and letters be creative)">
+                  <span class="checkmark"></span>
+                </label><br>
+              </th>
+            </tr>
+          </table>
+
+
+        </div>
+        <br>
+        <label class="container" style="color: #3d3d3d;">
+          <div>Hard</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="hard" name="hard" value="hard">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container" style="color: #3d3d3d;">
+          <div>Large</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="large" name="large" value="large">
+          <span class="checkmark"></span>
+        </label>
+        <br>
+        <button id="start-button" type="submit" onclick="startLoading()">Generate pdf</button>
+        <br>
+      </form>
+
+      <div id="loading-container">
+          <div id="loading-content">
+              <div id="loading-bar"></div>
+              <br>
+              <div id="loading-text">Loading...</div>
+          </div>
+      </div>
+      <br>
+      <br>
+
+    </div>
+
+</body>
+
+</html>

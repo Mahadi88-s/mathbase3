@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4514012061945986"
+     crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'basic.css' %}"/>
+    <script src="{% static 'script.js' %}"></script>
+    <title>Mathbase</title>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <b><a class="welcome" href="/index">Welcome to Mathsbase {{data}}</a></b>
+
+            <div class="search-container">
+              <form action="/search" method="POST">
+                {% csrf_token %}
+                <input name="username" type="text" placeholder="Search Users">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+
+        <br>
+
+    </header>
+    <div class="sidebar">
+        <a class="active" >Generate maths exercises</a>
+        <a href="/index" >Home</a>
+        <a href="/">Homepage</a>
+        {% if user.username == "Mahadi" %}
+        <a href="/upload_top1">Upload To Paper 1</a>
+        <a href="/upload_top2">Upload To Paper 2</a>
+        <a href="/upload_top3">Upload To Paper 3</a>
+        {% endif %}
+        {% if data.premium == True %}
+        <a href="/ai_site">AI Help</a>
+        {% endif %}
+        <a href="/ai_exam">AI mini mock generator</a>
+        <a href="/library">Library</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+        <br>
+    </div>
+
+
+    <div class="content">
+      <script src="{% static '/script.js' %}"> </script>
+      <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
+
+
+      <h2>Generate maths exercises</h2>
+      <br>
+      <h3>How to use</h3>
+      <table class="styled-table">
+        <tr>
+            <th>Insert format</th>
+            <th>Name File</th>
+            <th>Write the topic</th>
+            <th>State quantity of questions</th>
+            <th>Click on Generate pdf</th>
+        </tr>
+        <tr>
+            <th>Type in an example of the question; e.g "Factorise 45x - 5x"</th>
+            <th>Giving a name is essential; e.g "Factorisation worksheet"</th>
+            <th>E.g "Factorisation"</th>
+            <th>E.g 20 - it's going to give you 20 questions in the pdf (25 recommended)</th>
+            <th>Wait for a few seconds and you should have the file dowloaded!</th>
+        </tr>
+      </table>
+
+      <style>
+        .warning {
+          padding: 20px;
+          border: 3px solid red;
+          background-color: rgba(249, 1, 1, 0.596);
+          box-sizing: border-box;
+      }
+      </style>
+
+      <br>
+      <div class="warning">
+        <h5><strong>Info!</strong> In case you are unsatisfied with the result of the pdf generated, you can always refresh the tab and get a new pdf generation. HOWEVER, please do not abuse this feature.</h5>
+      </div>
+
+      <br>
+
+      <br>
+      <form action="/ai-ex" class="search-bar" method="POST">
+        {% csrf_token %}
+        <input type="text" name="prompt" placeholder="Prompt">
+        <input type="text" name="filename" placeholder="File Name">
+        <input type="text" name="topic" placeholder="Topic">
+        <input type="text" name="quantity" placeholder="Quantity of questions"><br>
+        <label class="container" style="color: #3d3d3d;">
+          <div>Hard</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="hard" name="hard" value="hard">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container" style="color: #3d3d3d;">
+          <div>Compact</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="compact" name="compact" value="compact">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container" style="color: #3d3d3d;">
+          <div>Formatted (Front page)</div> <input style="width: revert; height: revert; border-radius: revert; background: revert;" type="checkbox" id="formatted" name="f" value="f">
+          <span class="checkmark"></span>
+        </label><br>
+        <button id="start-button" type="submit" onclick="startLoading()">Generate pdf</button>
+        <br>
+      </form>
+      <div id="loading-container">
+          <div id="loading-content">
+              <div id="loading-bar"></div>
+              <div id="loading-text">Loading...</div>
+          </div>
+      </div>
+
+    </div>
+
+</body>
+
+</html>

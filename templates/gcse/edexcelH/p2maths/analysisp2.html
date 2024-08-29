@@ -1,0 +1,391 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <title>Mathbase</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Questions', 'Triangle', 'Probabilty', 'Statistics', 'Geometry', 'Graph', 'Number', 'Algebra', 'Ratio', 'Inequality', 'Interest', 'Density', 'Vectors'],
+          ['Question 1', '{{t1}}', '{{p1}}', '{{s1}}', '{{g1}}', '{{gr1}}', '{{n1}}', '{{a1}}', '{{r1}}', '{{i1}}', '{{in1}}', '{{d1}}', '{{v1}}'],
+          ['Question 2', '{{t2}}', '{{p2}}', '{{s2}}', '{{g2}}', '{{gr2}}', '{{n2}}', '{{a2}}', '{{r2}}', '{{i2}}', '{{in2}}', '{{d2}}', '{{v2}}'],
+          ['Question 3', '{{t3}}', '{{p3}}', '{{s3}}', '{{g3}}', '{{gr3}}', '{{n3}}', '{{a3}}', '{{r3}}', '{{i3}}', '{{in3}}', '{{d3}}', '{{v3}}'],
+          ['Question 4', '{{t4}}', '{{p4}}', '{{s4}}', '{{g4}}', '{{gr4}}', '{{n4}}', '{{a4}}', '{{r4}}', '{{i4}}', '{{in4}}', '{{d4}}', '{{v4}}'],
+          ['Question 5', '{{t5}}', '{{p5}}', '{{s5}}', '{{g5}}', '{{gr5}}', '{{n5}}', '{{a5}}', '{{r5}}', '{{i5}}', '{{in5}}', '{{d5}}', '{{v5}}'],
+          ['Question 6', '{{t6}}', '{{p6}}', '{{s6}}', '{{g6}}', '{{gr6}}', '{{n6}}', '{{a6}}', '{{r6}}', '{{i6}}', '{{in6}}', '{{d6}}', '{{v6}}'],
+          ['Question 7', '{{t7}}', '{{p7}}', '{{s7}}', '{{g7}}', '{{gr7}}', '{{n7}}', '{{a7}}', '{{r7}}', '{{i7}}', '{{in7}}', '{{d7}}', '{{v7}}'],
+          ['Question 8', '{{t8}}', '{{p8}}', '{{s8}}', '{{g8}}', '{{gr8}}', '{{n8}}', '{{a8}}', '{{r8}}', '{{i8}}', '{{in8}}', '{{d8}}', '{{v8}}'],
+          ['Question 9', '{{t9}}', '{{p9}}', '{{s9}}', '{{g9}}', '{{gr9}}', '{{n9}}', '{{a9}}', '{{r9}}', '{{i9}}', '{{in9}}', '{{d9}}', '{{v9}}'],
+          ['Question 10', '{{t10}}', '{{p10}}', '{{s10}}', '{{g10}}', '{{gr10}}', '{{n10}}', '{{a10}}', '{{r10}}', '{{i10}}', '{{in10}}', '{{d10}}', '{{v10}}'],
+          ['Question 11', '{{t11}}', '{{p11}}', '{{s11}}', '{{g11}}', '{{gr11}}', '{{n11}}', '{{a11}}', '{{r11}}', '{{i11}}', '{{in11}}', '{{d11}}', '{{v11}}'],
+          ['Question 12', '{{t12}}', '{{p12}}', '{{s12}}', '{{g12}}', '{{gr12}}', '{{n12}}', '{{a12}}', '{{r12}}', '{{i12}}', '{{in12}}', '{{d12}}', '{{v12}}'],
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Question by topic analysis',
+            subtitle: 'Frequency of topic in questions since 2018-2021',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Topics', 'Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12'],
+            ['Triangle', '{{t1}}', '{{t2}}', '{{t3}}', '{{t4}}', '{{t5}}', '{{t6}}', '{{t7}}', '{{t8}}', '{{t9}}', '{{t10}}', '{{t11}}', '{{t12}}'],
+            ['Probabilty', '{{p1}}', '{{p2}}', '{{p3}}', '{{p4}}', '{{p5}}', '{{p6}}', '{{p7}}', '{{p8}}', '{{p9}}', '{{p10}}', '{{p11}}', '{{p12}}'],
+            ['Statistics', '{{s1}}', '{{s2}}', '{{s3}}', '{{s4}}', '{{s5}}', '{{s6}}', '{{s7}}', '{{s8}}', '{{s9}}', '{{s10}}', '{{s11}}', '{{s12}}'],
+            ['Geometry', '{{g1}}', '{{g2}}', '{{g3}}', '{{g4}}', '{{g5}}', '{{g6}}', '{{g7}}', '{{g8}}', '{{g9}}', '{{g10}}', '{{g11}}', '{{g12}}'],
+            ['Graph', '{{gr1}}', '{{gr2}}', '{{gr3}}', '{{gr4}}', '{{gr5}}', '{{gr6}}', '{{gr7}}', '{{gr8}}', '{{gr9}}', '{{gr10}}', '{{gr11}}', '{{gr12}}'],
+            ['Number', '{{n1}}', '{{n2}}', '{{n3}}', '{{n4}}', '{{n5}}', '{{n6}}', '{{n7}}', '{{n8}}', '{{n9}}', '{{n10}}', '{{n11}}', '{{n12}}'],
+            ['Algebra', '{{a1}}', '{{a2}}', '{{a3}}', '{{a4}}', '{{a5}}', '{{a6}}', '{{a7}}', '{{a8}}', '{{a9}}', '{{a10}}', '{{a11}}', '{{a12}}'],
+            ['Ratio', '{{r1}}', '{{r2}}', '{{r3}}', '{{r4}}', '{{r5}}', '{{r6}}', '{{r7}}', '{{r8}}', '{{r9}}', '{{r10}}', '{{r11}}', '{{r12}}'],
+            ['Inequality', '{{i1}}', '{{i2}}', '{{i3}}', '{{i4}}', '{{i5}}', '{{i6}}', '{{i7}}', '{{i8}}', '{{i9}}', '{{i10}}', '{{i11}}', '{{i12}}'],
+            ['Interest', '{{in1}}', '{{in2}}', '{{in3}}', '{{in4}}', '{{in5}}', '{{in6}}', '{{in7}}', '{{in8}}', '{{in9}}', '{{in10}}', '{{in11}}', '{{in12}}'],
+            ['Density', '{{d1}}', '{{d2}}', '{{d3}}', '{{d4}}', '{{d5}}', '{{d6}}', '{{d7}}', '{{d8}}', '{{d9}}', '{{d10}}', '{{d11}}', '{{d12}}'],
+            ['Vectors', '{{v1}}', '{{v2}}', '{{v3}}', '{{v4}}', '{{v5}}', '{{v6}}', '{{v7}}', '{{v8}}', '{{v9}}','{{v10}}', '{{v11}}', '{{v12}}']
+
+        ]);
+
+        var options = {
+            chart: {
+            title: 'Question by topic analysis',
+            subtitle: 'Frequency of topic in questions since 2018-2021',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material2'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+
+</head>
+<style>
+    * {box-sizing: border-box;}
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #e9e9e9;
+    }
+
+    .topnav a {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    .topnav .search-container {
+      float: right;
+    }
+
+    .topnav input[type=text] {
+      padding: 6px;
+      margin-top: 8px;
+      font-size: 17px;
+      border: none;
+    }
+
+    .topnav .search-container button {
+      float: right;
+      padding: 6px;
+      margin-top: 8px;
+      margin-right: 16px;
+      background: #ddd;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .topnav .search-container button:hover {
+      background: #ccc;
+    }
+
+    @media screen and (max-width: 600px) {
+      .topnav .search-container {
+        float: none;
+      }
+      .topnav a, .topnav input[type=text], .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+      }
+      .topnav input[type=text] {
+        border: 1px solid #ccc;
+      }
+    }
+    </style>
+
+<body>
+    <header>
+        <div class="topnav">
+            <b><a class="welcome" href="/">Welcome to Mathsbase {{data}}</a></b>
+            <a href="/index">Home</a>
+            <a href="/">Homepage</a>
+            <a href="/profile">Profile</a>
+            {% if data.premium == True %}
+            <a href="/ai_site">AI Help</a>
+            {% endif %}
+            <div class="search-container">
+              <form action="/search" method="POST">
+                {% csrf_token %}
+                <input name="username" type="text" placeholder="Search Users">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+        </div>
+
+    </header>
+<br>
+<br>
+
+<hr>
+    <br>
+    <br>
+    <div>
+        <h3>Topic library</h3>
+
+
+        <table class="styled-table2" style="width: 100%;">
+            <tr>
+                <th>
+                    Triangle
+                </th>
+                <th>
+                    Probabilty
+                </th>
+                <th>
+                    Statistics
+                </th>
+                <th>
+                    Geometry
+                </th>
+                <th>
+                    Graph
+                </th>
+                <th>
+                    Numbers
+                </th>
+                <th>
+                    Algebra
+                </th>
+                <th>
+                    Ratio
+                </th>
+                <th>
+                    Inequality
+                </th>
+                <th>
+                    Interest
+                </th>
+                <th>
+                    Density
+                </th>
+                <th>
+                    Vectors
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    {% for q in tri%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in pro%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in sta%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in geo%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in gra%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in num%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in alg%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in rat%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in ine%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in int%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in den%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+                <th>
+                    {% for q in vec%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </th>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h3>Percantage of questions for any given topic</h3>
+
+        <table class="styled-table" style="width:100%">
+            <tr>
+              <th>Triangle</th>
+              <th>Probabilty</th>
+              <th>Statistics</th>
+              <th>Geometry</th>
+              <th>Graph</th>
+              <th>Numbers</th>
+              <th>Algebra</th>
+              <th>Ratio</th>
+              <th>Inequality</th>
+              <th>Interest</th>
+              <th>Density</th>
+              <th>Vectors</th>
+            </tr>
+            <tr>
+                <th>{{trip}}%</th>
+                <th>{{prop}}%</th>
+                <th>{{stap}}%</th>
+                <th>{{geop}}%</th>
+                <th>{{grap}}%</th>
+                <th>{{nump}}%</th>
+                <th>{{algp}}%</th>
+                <th>{{ratp}}%</th>
+                <th>{{inep}}%</th>
+                <th>{{intp}}%</th>
+                <th>{{denp}}%</th>
+                <th>{{vecp}}%</th>
+            </tr>
+            <tr>
+                <th>{{mtri}} Marks</th>
+                <th>{{mpro}} Marks</th>
+                <th>{{msta}} Marks</th>
+                <th>{{mgeo}} Marks</th>
+                <th>{{mgra}} Marks</th>
+                <th>{{mnum}} Marks</th>
+                <th>{{malg}} Marks</th>
+                <th>{{mrat}} Marks</th>
+                <th>{{mine}} Marks</th>
+                <th>{{mint}} Marks</th>
+                <th>{{mden}} Marks</th>
+                <th>{{mvec}} Marks</th>
+            </tr>
+            <tr>
+                <th>{{ptri}}%</th>
+                <th>{{ppro}}%</th>
+                <th>{{psta}}%</th>
+                <th>{{pgeo}}%</th>
+                <th>{{pgra}}%</th>
+                <th>{{pnum}}%</th>
+                <th>{{palg}}%</th>
+                <th>{{prat}}%</th>
+                <th>{{pine}}%</th>
+                <th>{{pint}}%</th>
+                <th>{{pden}}%</th>
+                <th>{{pvec}}%</th>
+            </tr>
+          </table>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <!--
+    <br>
+    <div id="columnchart_material" style="width: 70%; height: 500px;"></div>
+    <br>
+    <div id="columnchart_material2" style="width: 70%; height: 500px;"></div>
+    -->
+
+
+
+    <style>
+
+        section {
+        display: inline-block;
+        vertical-align: top;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+    </style>
+
+
+</body>
+
+</html>

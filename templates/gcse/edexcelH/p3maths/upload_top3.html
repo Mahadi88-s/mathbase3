@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <title>Mathbase</title>
+
+
+</head>
+
+<body>
+
+    <h1>Upload to paper 3</h1>
+
+    <header>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+
+    <form action="upload" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div>
+            <input type="hidden" name="paper" value="3">
+
+            <p>year</p>
+            <input type="text" name="year" id="">
+
+            <p>number</p>
+            <input type="text" name="number" id="">
+
+            <p>topic</p>
+            <input type="text" name="topic" id="">
+
+            <p>marks</p>
+            <input type="text" name="marks" id="">
+
+            <p>image</p>
+            <input type="file" name="img">
+            <br>
+
+            <p>prompt</p>
+            <input type="text" name="prompt">
+            <br>
+            <input type="hidden" name="ans" value="Not Set">
+
+            <button type="submit" >Upload</button>
+        </div>
+    </form>
+
+
+
+
+    <br>
+    <h1>Library</h1>
+
+    <table width="100%">
+        <tr>
+            <th>2021</th>
+            <th>2020</th>
+            <th>2019 November</th>
+            <th>2019 June</th>
+            <th>2018 November</th>
+            <th>2018 June</th>
+        </tr>
+        <tr>
+            <th>
+                {% for i in q2021 %}
+                <table width="100%">
+                    <tr>
+                        <th>Topic</th>
+                        <th>Number</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.topic}}</td>
+                        <td>{{i.number}}</td>
+                        <td>{{i.marks}}</td>
+                    </tr>
+                </table>
+                {% endfor%}
+            </th>
+            <th>
+                {% for i in q2020 %}
+                <table width="100%">
+                    <tr>
+                        <th>Topic</th>
+                        <th>Number</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.topic}}</td>
+                        <td>{{i.number}}</td>
+                        <td>{{i.marks}}</td>
+                    </tr>
+                </table>
+                {% endfor%}
+            </th>
+            <th>
+                {% for i in q2019 %}
+                <table width="100%">
+                    <tr>
+                        <th>Topic</th>
+                        <th>Number</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.topic}}</td>
+                        <td>{{i.number}}</td>
+                        <td>{{i.marks}}</td>
+                    </tr>
+                </table>
+                {% endfor%}
+            </th>
+            <th>
+                {% for i in q20190 %}
+                <table width="100%">
+                    <tr>
+                        <th>Topic</th>
+                        <th>Number</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.topic}}</td>
+                        <td>{{i.number}}</td>
+                        <td>{{i.marks}}</td>
+                    </tr>
+                </table>
+                {% endfor%}
+            </th>
+            <th>
+                {% for i in q2018 %}
+                <table width="100%">
+                    <tr>
+                        <th>Topic</th>
+                        <th>Number</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.topic}}</td>
+                        <td>{{i.number}}</td>
+                        <td>{{i.marks}}</td>
+                    </tr>
+                </table>
+                {% endfor%}
+            </th>
+            <th>
+                {% for i in q20180 %}
+                <table width="100%">
+                    <tr>
+                        <th>Topic</th>
+                        <th>Number</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>{{i.topic}}</td>
+                        <td>{{i.number}}</td>
+                        <td>{{i.marks}}</td>
+                    </tr>
+                </table>
+                {% endfor%}
+            </th>
+        </tr>
+    </table>
+
+	<footer>
+
+	</footer>
+
+    <style>
+
+        section {
+        display: inline-block;
+        vertical-align: top;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            vertical-align: top;
+            table-layout: fixed;
+        }
+
+    </style>
+
+</body>
+
+</html>

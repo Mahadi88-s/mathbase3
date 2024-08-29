@@ -1,0 +1,102 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4514012061945986"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <link rel="stylesheet" href="{% static 'basic.css' %}"/>
+    <title>Mathsbase Profile</title>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <b><a class="welcome" href="/index">Welcome to Mathsbase {{data}}</a></b>
+
+            <div class="search-container">
+              <form action="/search" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Search Users" name="username">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+
+        <br>
+
+    </header>
+
+
+<body>
+    <div class="sidebar">
+        <a class="active" >Profile</a>
+        <a href="/">Homepage</a>
+        {% if user.username == "Mahadi" %}
+        <a href="/upload_top1">Upload To Paper 1</a>
+        <a href="/upload_top2">Upload To Paper 2</a>
+        <a href="/upload_top3">Upload To Paper 3</a>
+        {% endif %}
+        <a href="/index">Home</a>
+        {% if data.premium == True %}
+        <a href="/ai_site">AI Help</a>
+        {% endif %}
+        <a href="/ai_exercises">AI Exam practice</a>
+        <a href="/ai_exam">AI mini mock generator</a>
+        <a href="/library">Library</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="content">
+        <br>
+        <h1>User Profile {{data}}</h1>
+        <br>
+        <p>Please make sure you're data is kept safe. In this page you can access you're api key; which is subject to be disabled in case of misuse, change in case of unauthorisation.</p>
+        <br>
+        <h2>Account information: </h2>
+        <br>
+        <p>In the table below, account name is shown, when the account was initiated and the api key. The api key is very important and secrecy is advised. to know more about how to use the api click <a href="">here</a>.</p>
+        <br>
+        <table class="styled-table">
+            <tr>
+                <th>Account name</th>
+                <th>Account created at</th>
+                <th>Api Key</th>
+            </tr>
+            <tr>
+                <th>{{data.user}}</th>
+                <th>{{data.created_at}}</th>
+                <th>{{data.api_key}}</th>
+            </tr>
+        </table>
+        <br>
+        <h2>User Bio</h2>
+        <br>
+        <p>To become a premium member and have access to AI facilities please email: simahadizic88@gmail.com, Currently it's a £3.99 monthly</p>
+        <table class="styled-table">
+            <tr>
+                <th>Bio</th>
+                <th>PDF's generated</th>
+                <th>Premium</th>
+            </tr>
+            <tr>
+                <th>{{data.bio}}</th>
+                <th>{{number_of_pdfs}}</th>
+                <th>{{data.premium}}</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <style>
+
+        table, th, td {
+            border: 1px solid black;
+            vertical-align: top;
+            table-layout: fixed;
+        }
+
+    </style>
+</body>
+</html>

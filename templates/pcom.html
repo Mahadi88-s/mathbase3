@@ -1,0 +1,239 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4514012061945986"
+     crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'basic.css' %}"/>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <title>Mathbase</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/index">Home</a>
+        </nav>
+    </header>
+<br>
+<br>
+
+<hr>
+    <br>
+    <br>
+    <div>
+        <h3>Topic library</h3>
+
+        <section>
+        <li>Triangle
+            <ul>
+                {% for q in tri%}
+                <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                {% endfor %}
+            </ul>
+        </li>
+        </section>
+
+        <section>
+            <li>Probabilty
+                <ul>
+                    {% for q in pro%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Statistics
+                <ul>
+                    {% for q in sta%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Geometry
+                <ul>
+                    {% for q in geo%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Graph
+                <ul>
+                    {% for q in gra%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Numbers
+                <ul>
+                    {% for q in num%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Algebra
+                <ul>
+                    {% for q in alg%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Ratio
+                <ul>
+                    {% for q in rat%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Inequality
+                <ul>
+                    {% for q in ine%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Interest
+                <ul>
+                    {% for q in int%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Density
+                <ul>
+                    {% for q in den%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+        <section>
+            <li>Vectors
+                <ul>
+                    {% for q in vec%}
+                    <h5>{{q.number}}, {{q.year}}, {{q.marks}}</h5>
+                    {% endfor %}
+                </ul>
+            </li>
+        </section>
+
+
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div>
+        <h3>Percantage of questions for any given topic</h3>
+
+        <table style="width:100%">
+            <tr>
+              <th>Triangle</th>
+              <th>Probabilty</th>
+              <th>Statistics</th>
+              <th>Geometry</th>
+              <th>Graph</th>
+              <th>Numbers</th>
+              <th>Algebra</th>
+              <th>Ratio</th>
+              <th>Inequality</th>
+              <th>Interest</th>
+              <th>Density</th>
+              <th>Vectors</th>
+            </tr>
+            <tr>
+                <th>{{trip}}%</th>
+                <th>{{prop}}%</th>
+                <th>{{stap}}%</th>
+                <th>{{geop}}%</th>
+                <th>{{grap}}%</th>
+                <th>{{nump}}%</th>
+                <th>{{algp}}%</th>
+                <th>{{ratp}}%</th>
+                <th>{{inep}}%</th>
+                <th>{{intp}}%</th>
+                <th>{{denp}}%</th>
+                <th>{{vecp}}%</th>
+            </tr>
+            <tr>
+                <th>{{mtri}} Marks</th>
+                <th>{{mpro}} Marks</th>
+                <th>{{msta}} Marks</th>
+                <th>{{mgeo}} Marks</th>
+                <th>{{mgra}} Marks</th>
+                <th>{{mnum}} Marks</th>
+                <th>{{malg}} Marks</th>
+                <th>{{mrat}} Marks</th>
+                <th>{{mine}} Marks</th>
+                <th>{{mint}} Marks</th>
+                <th>{{mden}} Marks</th>
+                <th>{{mvec}} Marks</th>
+            </tr>
+            <tr>
+                <th>{{ptri}}%</th>
+                <th>{{ppro}}%</th>
+                <th>{{psta}}%</th>
+                <th>{{pgeo}}%</th>
+                <th>{{pgra}}%</th>
+                <th>{{pnum}}%</th>
+                <th>{{palg}}%</th>
+                <th>{{prat}}%</th>
+                <th>{{pine}}%</th>
+                <th>{{pint}}%</th>
+                <th>{{pden}}%</th>
+                <th>{{pvec}}%</th>
+            </tr>
+          </table>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <style>
+
+        section {
+        display: inline-block;
+        vertical-align: top;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+    </style>
+
+
+</body>
+
+</html>

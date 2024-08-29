@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <title>Mathsbase</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4514012061945986"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">Mathsbase</div>
+            <div class="header-buttons">
+                <a href="/signin" style="text-decoration: none;" class="login-button">Login</a>
+                <a href="/signup" style="text-decoration: none;" class="signup-button">Sign Up</a>
+                <a href="/index" style="text-decoration: none;" class="signup-button">Already Signed In</a>
+            </div>
+        </div>
+    </header>
+
+<div class="container">
+    <div class="cta">
+        <h2>Revolutionize Your Math Revision with Mathsbase</h2>
+        <p>A revolutionary AI-based revision aid designed for GCSE students.</p>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h3>Personalized AI generated worksheets</h3>
+            <p>You don't have to hassle to find worksheets online, when you can make one with one click based on your needs!</p>
+        </div>
+        <div class="feature">
+            <h3>Test your comprehension with AI!</h3>
+            <p>Give a text containing information that you are supposed to learn, and let the AI ask you questions and help you revise and effectively learn key information from the text given and let it track your progress!</p>
+        </div>
+        <div class="feature">
+            <h3>Responsive database</h3>
+            <p>Over 300+ GCSE Maths past paper exam questions available to be fetched. Sorted by topic, year and number of marks!</p>
+        </div>
+        <div class="feature">
+            <h3>Comprehensive analysis</h3>
+            <p>We provide up-to-date analysis of each paper and the probability and frequency of appearence of certain topics.</p>
+        </div>
+        <div class="feature">
+            <h3>Community PDF library</h3>
+            <p>A open source, free, no copyright library where everytime a new pdf is generated it is saved in the public library for anyone to dowload, like or print</p>
+        </div>
+        <div class="feature">
+            <h3>Personalized AI assistant</h3>
+            <p>No teachers or tutors in the vicinities? Try our new GPT based assistant for some help!</p>
+        </div>
+    </div>
+
+    <div class="signup">
+        <h2>Get Started Today</h2>
+        <p>Join Mathsbase and excel in your math studies!</p>
+        <a href="/signup" style="text-decoration: none;" class="button-g">Sign Up</a>
+    </div>
+    <br>
+    <div class="login">
+        <h2>Login</h2>
+        <p>Already have an account? Log in to access your studies.</p>
+        <div class="login-form">
+            <form action="/signin" method="POST">
+                {% csrf_token %}
+                <label for="login-username">Username:</label>
+                <input type="text" placeholder="Enter Username" name="username" required style="width: fit-content;">
+
+                <label for="login-password">Password:</label>
+                <input type="password" placeholder="Enter Password" name="password" required style="width: fit-content;">
+
+                <button style="text-align: center;" class="login-button" type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">Mathsbase</div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-social">
+
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+

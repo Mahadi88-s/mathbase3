@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-adsense-account" content="ca-pub-4514012061945986">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4514012061945986"
+     crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'basic.css' %}"/>
+    <title>Mathbase</title>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <b><a class="welcome" href="/index">Go back</a></b>
+
+            <div class="search-container">
+              <form action="/search" method="POST">
+                {% csrf_token %}
+                <input name="username" type="text" placeholder="Search Users">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+
+        <br>
+
+    </header>
+    <div class="search-container">
+      {% for users in list %}
+      <table class="styled-table">
+        <tr>
+          <th>
+            <h2 style="margin-left: 10px;">{{users.user}}</h2>
+          </th>
+        </tr>
+      </table>
+      {% endfor %}
+    </div>
+
+
+    <style>
+
+      .search-container
+      {
+        padding-left: 18px;
+      }
+
+    </style>
+
+
+
+</body>
+
+</html>
